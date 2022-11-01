@@ -18,7 +18,6 @@ public class GetArtist {
     }
 
     private List<ArtistBase> artists;
-
     public String getArtists() {
         get("/spotify-api/v1", (request, response) -> {
             response.header("content-type", "application/json");
@@ -31,10 +30,8 @@ public class GetArtist {
                 for(ArtistBase artista: artists) {
                     query += artista.getId() + ",";
                 }
-
-                SpotifyAccessor accessor = new SpotifyAccessor();
-                String json = accessor.get("/artists?ids=" + query.substring(0, query.length()-1), Map.of());
-                return json;
+                ArtistAccesor accesor = new ArtistAccesor(query);
+                return accesor.getJson();
             }
 
             try{
@@ -44,9 +41,8 @@ public class GetArtist {
                         query += artista.getId() + ",";
                     }
                 }
-                SpotifyAccessor accessor = new SpotifyAccessor();
-                String json = accessor.get("/artists?ids=" + query.substring(0, query.length()-1), Map.of());
-                return json;
+                ArtistAccesor accesor = new ArtistAccesor(query);
+                return accesor.getJson();
             }
             catch (NumberFormatException e){
                 halt(400, "Bad type for popularity param");
@@ -55,7 +51,7 @@ public class GetArtist {
 
             return null;
         });
-        return null;
+        return  null;
     }
 }
 
