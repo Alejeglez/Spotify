@@ -12,15 +12,14 @@ public class CreateArtist {
         this.json = json;
     }
 
-    public void createArtist(){
+    public ArtistList createArtist(){
         Gson gson = new Gson();
 
         ArtistList artists = gson.fromJson(json, ArtistList.class);
 
-        for(Artist artist : artists.getArtists()){
-            System.out.println(artist.getName());
-        }
+        return artists;
     }
+
 
 
 }
