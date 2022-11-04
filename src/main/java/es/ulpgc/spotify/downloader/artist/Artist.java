@@ -26,16 +26,26 @@ public class Artist {
 
     private String uri;
 
-    public Map<String, String> getExternal_urls() {
-        return external_urls;
+    public String getExternal_urls() {
+
+        return external_urls.get("Spotify");
     }
 
-    public Map<String, Object> getFollowers() {
-        return followers;
+    public String getFollowersHref() {
+
+        return (String) followers.get("href");
     }
 
-    public List<String> getGenres() {
-        return genres;
+    public double getFollowers(){
+        return (double) followers.get("total");
+    }
+
+    public String getGenres() {
+        String url = "";
+        for(String genre : genres){
+            url += genre + ",";
+        }
+        return url.substring(0, url.length()-1);
     }
 
     public String getHref() {
@@ -46,8 +56,27 @@ public class Artist {
         return id;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public String getImagesUrl() {
+        String url = "";
+        for(Image image : images){
+            url += image.getUrl() + ",";
+        }
+        return  url.substring(0, url.length()-1);
+    }
+
+    public String getImagesWidth(){
+        String url = "";
+        for(Image image : images){
+            url += image.getWidth() + ",";
+        }
+        return  url.substring(0, url.length()-1);
+    }
+    public String getImagesHeight(){
+        String url = "";
+        for(Image image : images){
+            url += image.getHeight() + ",";
+        }
+        return  url.substring(0, url.length()-1);
     }
 
     public String getName() {

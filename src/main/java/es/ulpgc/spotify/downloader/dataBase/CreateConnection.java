@@ -3,6 +3,7 @@ package es.ulpgc.spotify.downloader.dataBase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CreateConnection {
     public CreateConnection(String name) {
@@ -11,27 +12,22 @@ public class CreateConnection {
 
     private String name;
 
-    public void connect() {
+    public Connection connect() {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:D:/Alejandro/Desktop/spotify/spotify/src/" + name + ".db" ;
+            String url = "jdbc:sqlite:" + name + ".db" ;
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
-            System.out.println("Connection to SQLite has been established.");
+
+            return conn;
+
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
+        return null;
     }
     //Puedo usar sobrecarga es decir definir un metodo con mismo nombre paratodo con insertstatementOf
 

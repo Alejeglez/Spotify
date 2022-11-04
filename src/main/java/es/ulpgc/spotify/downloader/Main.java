@@ -4,6 +4,8 @@ import es.ulpgc.spotify.downloader.album.AlbumAccesor;
 import es.ulpgc.spotify.downloader.album.CreateAlbums;
 import es.ulpgc.spotify.downloader.artist.*;
 import es.ulpgc.spotify.downloader.dataBase.CreateConnection;
+import es.ulpgc.spotify.downloader.dataBase.DataBaseInsert;
+import es.ulpgc.spotify.downloader.dataBase.DataBaseTable;
 import es.ulpgc.spotify.downloader.tracks.TrackAccesor;
 
 import java.util.ArrayList;
@@ -16,18 +18,21 @@ public class Main {
         createArtist();
 
 
-        //ArtistAccesor accesor= new ArtistAccesor(urls);
-        //CreateArtist creadorArtistas = new CreateArtist(accesor.getJson());
-        //ArtistList artistList = creadorArtistas.createArtist();
-        //AlbumAccesor accesorAlbum = new AlbumAccesor(urls);
+        ArtistAccesor accesor= new ArtistAccesor(urls);
+        CreateArtist creadorArtistas = new CreateArtist(accesor.getJson());
+        ArtistList artistList = creadorArtistas.createArtist();
+
         //CreateAlbums creadorAlbums = new CreateAlbums(accesorAlbum.getJson());
         //TrackAccesor accesorTrack = new TrackAccesor(creadorAlbums.createAlbums());
-        CreateConnection connection = new CreateConnection("Artists");
-        connection.connect();
+        CreateConnection connection = new CreateConnection("SpotifyDB");
+        DataBaseTable artistTable = new DataBaseTable(connection.connect());
+        artistTable.createTableArtist();
+        DataBaseInsert insertArtist = new DataBaseInsert(connection.connect());
+        insertArtist.insertStatementOf(artistList.getArtists());
+
         //GetAlbums albums = new GetAlbums(artists);
         //String albumsJson = albums.getAlbums();
-        //CreateArtist creador = new CreateArtist(artistJson);
-        //creador.createArtist();
+        //CreateArtist creador = new CreateArtist(artistJson);        //creador.createArtist();
         //System.out.println("Hola");
     }
 
