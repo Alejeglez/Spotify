@@ -1,6 +1,10 @@
 package es.ulpgc.spotify.downloader;
 
+import es.ulpgc.spotify.downloader.album.AlbumAccesor;
+import es.ulpgc.spotify.downloader.album.CreateAlbums;
 import es.ulpgc.spotify.downloader.artist.*;
+import es.ulpgc.spotify.downloader.dataBase.CreateConnection;
+import es.ulpgc.spotify.downloader.tracks.TrackAccesor;
 
 import java.util.ArrayList;
 
@@ -12,11 +16,14 @@ public class Main {
         createArtist();
 
 
-        ArtistAccesor accesor= new ArtistAccesor(urls);
-        CreateArtist creadorArtistas = new CreateArtist(accesor.getJson());
-        ArtistList artistList = creadorArtistas.createArtist();
-        GetArtistLocal artistLocal = new GetArtistLocal(artistList.getArtists());
-        artistLocal.getArtists();
+        //ArtistAccesor accesor= new ArtistAccesor(urls);
+        //CreateArtist creadorArtistas = new CreateArtist(accesor.getJson());
+        //ArtistList artistList = creadorArtistas.createArtist();
+        //AlbumAccesor accesorAlbum = new AlbumAccesor(urls);
+        //CreateAlbums creadorAlbums = new CreateAlbums(accesorAlbum.getJson());
+        //TrackAccesor accesorTrack = new TrackAccesor(creadorAlbums.createAlbums());
+        CreateConnection connection = new CreateConnection("Artists");
+        connection.connect();
         //GetAlbums albums = new GetAlbums(artists);
         //String albumsJson = albums.getAlbums();
         //CreateArtist creador = new CreateArtist(artistJson);

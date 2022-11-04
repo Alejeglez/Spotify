@@ -6,6 +6,11 @@ public class AlbumsList {
 
     private String href;
     private List<Album> items;
+
+    public List<Album> getItems() {
+        return items;
+    }
+
     private int limit;
     private String next;
     private int offset;

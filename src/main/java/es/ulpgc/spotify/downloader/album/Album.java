@@ -18,6 +18,10 @@ public class Album {
 
     private String href;
 
+    public String getId() {
+        return id;
+    }
+
     private String id;
 
     private List<Image> images;
