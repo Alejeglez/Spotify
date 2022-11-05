@@ -24,8 +24,26 @@ public class Track {
     private String type;
     private String uri;
 
-    public Album getAlbum() {
-        return album;
+
+    public Track(Album album, List<Artist> artists, List<String> available_markets, int disc_number, int duration_ms, boolean explicit, External_urls external_urls, String href, String id, boolean is_local, String name, String preview_url, int track_number, String type, String uri) {
+        this.album = album;
+        this.artists = artists;
+        this.available_markets = available_markets;
+        this.disc_number = disc_number;
+        this.duration_ms = duration_ms;
+        this.explicit = explicit;
+        this.external_urls = external_urls;
+        this.href = href;
+        this.id = id;
+        this.is_local = is_local;
+        this.name = name;
+        this.preview_url = preview_url;
+        this.track_number = track_number;
+        this.type = type;
+        this.uri = uri;
+    }
+    public String getAlbum() {
+        return album.getName();
     }
 
     public String getArtists() {
@@ -41,7 +59,10 @@ public class Track {
         for(String market : available_markets){
             url += market;
         }
-        return url.substring(0, url.length()-1);
+        if(url.length() > 1) {
+            return url.substring(0, url.length() - 1);
+        }
+        return url;
     }
 
     public int getDisc_number() {
@@ -56,8 +77,9 @@ public class Track {
         return explicit;
     }
 
-    public External_urls getExternal_urls() {
-        return external_urls;
+    public String getExternal_urls() {
+
+        return external_urls.getSpotify();
     }
 
     public String getHref() {
@@ -92,21 +114,4 @@ public class Track {
         return uri;
     }
 
-    public Track(Album album, List<Artist> artists, List<String> available_markets, int disc_number, int duration_ms, boolean explicit, External_urls external_urls, String href, String id, boolean is_local, String name, String preview_url, int track_number, String type, String uri) {
-        this.album = album;
-        this.artists = artists;
-        this.available_markets = available_markets;
-        this.disc_number = disc_number;
-        this.duration_ms = duration_ms;
-        this.explicit = explicit;
-        this.external_urls = external_urls;
-        this.href = href;
-        this.id = id;
-        this.is_local = is_local;
-        this.name = name;
-        this.preview_url = preview_url;
-        this.track_number = track_number;
-        this.type = type;
-        this.uri = uri;
-    }
 }

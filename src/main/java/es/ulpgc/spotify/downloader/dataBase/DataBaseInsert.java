@@ -36,10 +36,10 @@ public class DataBaseInsert {
         }
     }
 
-    public void insertStatementOfTrack(List<Track> tracks){
+    public void insertStatementOfTrack(List<Track> tracks) throws SQLException {
         DmlTranslator dmlTranslator = new DmlTranslator(conn);
         for (Track track : tracks){
-
+            dmlTranslator.TrackToDML(track.getName(),  track.getArtists(), track.getAvailable_markets(), track.getDisc_number(), track.getDuration_ms(), track.isExplicit(), track.getExternal_urls(), track.getHref(), track.getId(), track.isIs_local(), track.getPreview_url(), track.getTrack_number(), track.getType(), track.getUri());
         }
     }
 

@@ -67,6 +67,32 @@ public class DmlTranslator {
 
     }
 
+    public void TrackToDML(String name, String artists, String availableMarkets, int discNumber, int durationMs, Boolean explicit, String externalUrls,  String href, String id, boolean isLocal, String previewUrl, int trackNumber, String type, String uri) throws SQLException {
+
+        String DmlStatement = "INSERT INTO Tracks VALUES (?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement pstmt = conn.prepareStatement(DmlStatement);
+        pstmt.setString(1, name);
+        pstmt.setString(2, artists);
+        pstmt.setString(3, availableMarkets);
+        pstmt.setInt(4, discNumber);
+        pstmt.setInt(5, durationMs);
+        pstmt.setBoolean(6, explicit);
+        pstmt.setString(7, externalUrls);
+        pstmt.setString(8, href);
+        pstmt.setString(9, id);
+        pstmt.setBoolean(10, isLocal);
+        pstmt.setString(11, previewUrl);
+        pstmt.setInt(12, trackNumber);
+        pstmt.setString(13, type);
+        pstmt.setString(14, uri);
+
+        pstmt.executeUpdate();
+
+    }
+
+
+
 }
 
 

@@ -6,6 +6,11 @@ public class TracksList {
 
     private String href;
     private List<Track> items;
+
+    public List<Track> getItems() {
+        return items;
+    }
+
     private int limit;
     private String next;
     private int offset;

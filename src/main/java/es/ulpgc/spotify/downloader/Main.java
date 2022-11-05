@@ -6,11 +6,12 @@ import es.ulpgc.spotify.downloader.album.CreateAlbums;
 import es.ulpgc.spotify.downloader.artist.*;
 import es.ulpgc.spotify.downloader.dataBase.CreateConnection;
 import es.ulpgc.spotify.downloader.dataBase.DataBaseInsert;
-import es.ulpgc.spotify.downloader.dataBase.DataBaseTable;
+import es.ulpgc.spotify.downloader.dataBase.DdlTranslator;
+import es.ulpgc.spotify.downloader.tracks.CreateTracks;
 import es.ulpgc.spotify.downloader.tracks.TrackAccesor;
+import es.ulpgc.spotify.downloader.tracks.TracksList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -25,24 +26,28 @@ public class Main {
         ArtistList artistList = creadorArtistas.createArtist();
         AlbumAccesor accesorAlbum = new AlbumAccesor(urls);
         CreateAlbums creadorAlbums = new CreateAlbums(accesorAlbum.getJson());
+        TrackAccesor accesorTracks = new TrackAccesor(creadorAlbums.createAlbums());
+        CreateTracks creadorTracks = new CreateTracks(accesorTracks.getJson());
 
 
 
 
-        CreateConnection connection = new CreateConnection("SpotifyDB");
-        DataBaseTable creatorsTable = new DataBaseTable(connection.connect());
-        creatorsTable.createTableArtist();
-        creatorsTable.createTableAlbums();
-        DataBaseInsert insertArtist = new DataBaseInsert(connection.connect());
-        insertArtist.insertStatementOfArtist(artistList.getArtists());
-        for(AlbumsList albumsList : creadorAlbums.createAlbums()){
-            insertArtist.insertStatementOfAlbum(albumsList.getItems());
-        }
+        //CreateConnection connection = new CreateConnection("SpotifyDB");
+        //DdlTranslator creatorsTable = new DdlTranslator(connection.connect());
+        //creatorsTable.createTableArtist();
+        //creatorsTable.createTableAlbums();
+        //creatorsTable.createTableTracks();
+        //DataBaseInsert insertArtist = new DataBaseInsert(connection.connect());
+        //insertArtist.insertStatementOfArtist(artistList.getArtists());
+        //for(AlbumsList albumsList : creadorAlbums.createAlbums()){
+        //    insertArtist.insertStatementOfAlbum(albumsList.getItems());
+        //}
 
-        //GetAlbums albums = new GetAlbums(artists);
-        //String albumsJson = albums.getAlbums();
-        //CreateArtist creador = new CreateArtist(artistJson);        //creador.createArtist();
-        //System.out.println("Hola");
+        //for(TracksList tracksList : creadorTracks.getTracks()){
+        //    insertArtist.insertStatementOfTrack(tracksList.getItems());
+        //}
+
+
     }
 
     //TODO

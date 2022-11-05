@@ -23,7 +23,7 @@ public class TrackAccesor {
         for(AlbumsList albumsList: listsAlbums){
             for(Album album : albumsList.getItems()){
                 SpotifyAccessor accessor = new SpotifyAccessor();
-                String json = accessor.get("albums/" + album.getId() + "/tracks", Map.of());
+                String json = accessor.get("/albums/" + album.getId() + "/tracks", Map.of());
                 jsonList.add(json);
             }
         }

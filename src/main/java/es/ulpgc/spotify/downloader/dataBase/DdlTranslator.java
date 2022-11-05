@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DataBaseTable {
+public class DdlTranslator {
 
     private Connection conn;
 
-    public DataBaseTable(Connection conn) throws SQLException {
+    public DdlTranslator(Connection conn) throws SQLException {
         this.conn = conn;
     }
 
@@ -61,5 +61,24 @@ public class DataBaseTable {
 
     }
 
+    public void createTableTracks() throws SQLException {
+        Statement statement = conn.createStatement();
+        statement.execute("CREATE TABLE IF NOT EXISTS Tracks (" +
+                "name TEXT NO NULL," +
+                "artists TEXT NO NULL ," +
+                "availableMarkets TEXT ," +
+                "discNumber REAL ,"+
+                "durationMs REAL ," +
+                "explicit BOOLEAN NO NULL ," +
+                "externalUrls TEXT ,"+
+                "href TEXT ," +
+                "id TEXT ," +
+                "isLocal BOOLEAN NO NULL," +
+                "previewUrl TEXT NO NULL," +
+                "trackNumber REAL NO NULL," +
+                "type TEXT NO NULL," +
+                "uri TEXT NO NULL" +
+                ")");
+    }
 
 }
