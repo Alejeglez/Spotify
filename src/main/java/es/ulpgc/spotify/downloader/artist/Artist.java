@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class Artist {
 
-    private Map<String, String> external_urls;
+    private External_urls external_urls;
 
-    private Map<String, Object> followers;
+    private Follower followers;
 
     private List<String> genres;
 
@@ -26,26 +26,40 @@ public class Artist {
 
     private String uri;
 
+    public Artist(External_urls external_urls, Follower followers, List<String> genres, String href, String id, List<Image> images, String name, int popularity, String type, String uri) {
+        this.external_urls = external_urls;
+        this.followers = followers;
+        this.genres = genres;
+        this.href = href;
+        this.id = id;
+        this.images = images;
+        this.name = name;
+        this.popularity = popularity;
+        this.type = type;
+        this.uri = uri;
+    }
+
     public String getExternal_urls() {
 
-        return external_urls.get("Spotify");
+        return external_urls.getSpotify();
     }
 
     public String getFollowersHref() {
 
-        return (String) followers.get("href");
+        return (String) followers.getHref();
     }
 
-    public double getFollowers(){
-        return (double) followers.get("total");
+    public Double getFollowers() {
+        return followers.getTotal();
     }
+
 
     public String getGenres() {
         String url = "";
-        for(String genre : genres){
+        for (String genre : genres) {
             url += genre + ",";
         }
-        return url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
 
     public String getHref() {
@@ -58,25 +72,26 @@ public class Artist {
 
     public String getImagesUrl() {
         String url = "";
-        for(Image image : images){
+        for (Image image : images) {
             url += image.getUrl() + ",";
         }
-        return  url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
 
-    public String getImagesWidth(){
+    public String getImagesWidth() {
         String url = "";
-        for(Image image : images){
+        for (Image image : images) {
             url += image.getWidth() + ",";
         }
-        return  url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
-    public String getImagesHeight(){
+
+    public String getImagesHeight() {
         String url = "";
-        for(Image image : images){
+        for (Image image : images) {
             url += image.getHeight() + ",";
         }
-        return  url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
 
     public String getName() {
@@ -95,16 +110,8 @@ public class Artist {
         return uri;
     }
 
-    public Artist(Map<String, String> external_urls, Map<String, Object> followers, List<String> genres, String href, String id, List<Image> images, String name, int popularity, String type, String uri) {
-        this.external_urls = external_urls;
-        this.followers = followers;
-        this.genres = genres;
-        this.href = href;
-        this.id = id;
-        this.images = images;
-        this.name = name;
-        this.popularity = popularity;
-        this.type = type;
-        this.uri = uri;
-    }
 }
+
+
+
+

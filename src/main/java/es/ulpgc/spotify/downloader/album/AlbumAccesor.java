@@ -21,7 +21,6 @@ public class AlbumAccesor {
         for(String url : urls) {
             SpotifyAccessor accessor = new SpotifyAccessor();
             String json = accessor.get("/artists/" + url + "/albums", Map.of());
-            System.out.println(json);
             jsonList.add(json);
 
         }

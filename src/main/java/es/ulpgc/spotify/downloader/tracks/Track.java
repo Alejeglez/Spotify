@@ -24,6 +24,74 @@ public class Track {
     private String type;
     private String uri;
 
+    public Album getAlbum() {
+        return album;
+    }
+
+    public String getArtists() {
+        String url = "";
+        for(Artist artist : artists){
+            url += artist.getName();
+        }
+        return url.substring(0, url.length()-1);
+    }
+
+    public String getAvailable_markets() {
+        String url = "";
+        for(String market : available_markets){
+            url += market;
+        }
+        return url.substring(0, url.length()-1);
+    }
+
+    public int getDisc_number() {
+        return disc_number;
+    }
+
+    public int getDuration_ms() {
+        return duration_ms;
+    }
+
+    public boolean isExplicit() {
+        return explicit;
+    }
+
+    public External_urls getExternal_urls() {
+        return external_urls;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public boolean isIs_local() {
+        return is_local;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPreview_url() {
+        return preview_url;
+    }
+
+    public int getTrack_number() {
+        return track_number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
     public Track(Album album, List<Artist> artists, List<String> available_markets, int disc_number, int duration_ms, boolean explicit, External_urls external_urls, String href, String id, boolean is_local, String name, String preview_url, int track_number, String type, String uri) {
         this.album = album;
         this.artists = artists;
