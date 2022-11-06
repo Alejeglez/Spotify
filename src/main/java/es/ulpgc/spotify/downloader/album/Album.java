@@ -5,7 +5,6 @@ import es.ulpgc.spotify.downloader.artist.External_urls;
 import es.ulpgc.spotify.downloader.artist.Image;
 
 import java.util.List;
-import java.util.Map;
 
 public class Album {
 

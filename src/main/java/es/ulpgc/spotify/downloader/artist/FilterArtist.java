@@ -13,13 +13,14 @@ public class FilterArtist {
         this.name = name;
     }
 
-    public Artist getFilteredArtist(){
-        for(Artist artist : artists){
-            if(name.equals(artist.getName())) {
-                List<String> urls = new ArrayList<>();
-                urls.add(artist.getId());
+    public ArrayList<String> getFilteredArtist() {
+        ArrayList<String> url = null;
+        for (Artist artist : artists) {
+            if (name.equals(artist.getName())) {
+                url = new ArrayList<>();
+                url.add(artist.getId());
             }
         }
-        return null;
+        return url;
     }
 }

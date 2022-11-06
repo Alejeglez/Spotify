@@ -1,11 +1,11 @@
 package es.ulpgc.spotify.downloader.dataBase;
 
-import es.ulpgc.spotify.downloader.artist.Artist;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
+
 
 public class DmlTranslator {
 
@@ -18,7 +18,6 @@ public class DmlTranslator {
 
     public void ArtistToDml(String name, String externalUrls, String followersHref, double followers, String genres, String href, String id, String imageUrl, String imageHeight, String imageWidth, int popularity, String type, String uri) throws SQLException {
         String DmlStatement = "INSERT INTO Artistas VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
         PreparedStatement pstmt = conn.prepareStatement(DmlStatement);
         pstmt.setString(1, name);
         pstmt.setString(2, externalUrls);
@@ -40,7 +39,6 @@ public class DmlTranslator {
     public void AlbumToDml(String name, String albumGroup, String albumType, String artistName, String availableMarkets, String externalUrls, String href, String id, String imageUrl, String imageWidth, String imageHeight, String realeaseDate, String releaseDatePresicion, int totalTracks, String type, String uri) throws SQLException {
 
         String DmlStatement = "INSERT INTO Albumes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
         PreparedStatement pstmt = conn.prepareStatement(DmlStatement);
         pstmt.setString(1, name);
         pstmt.setString(2, albumGroup);
@@ -67,7 +65,6 @@ public class DmlTranslator {
     public void TrackToDML(String name, String artists, String availableMarkets, int discNumber, int durationMs, Boolean explicit, String externalUrls,  String href, String id, boolean isLocal, String previewUrl, int trackNumber, String type, String uri) throws SQLException {
 
         String DmlStatement = "INSERT INTO Tracks VALUES (?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
         PreparedStatement pstmt = conn.prepareStatement(DmlStatement);
         pstmt.setString(1, name);
         pstmt.setString(2, artists);

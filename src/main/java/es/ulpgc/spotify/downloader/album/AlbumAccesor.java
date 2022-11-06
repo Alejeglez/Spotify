@@ -1,7 +1,6 @@
 package es.ulpgc.spotify.downloader.album;
 
 import es.ulpgc.spotify.downloader.SpotifyAccessor;
-import es.ulpgc.spotify.downloader.artist.Artist;
 
 import java.util.ArrayList;
 import java.util.List;

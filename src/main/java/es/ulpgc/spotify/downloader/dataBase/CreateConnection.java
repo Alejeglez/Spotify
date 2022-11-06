@@ -15,9 +15,7 @@ public class CreateConnection {
     public Connection connect() {
         Connection conn = null;
         try {
-            // db parameters
             String url = "jdbc:sqlite:" + name + ".db" ;
-            // create a connection to the database
             conn = DriverManager.getConnection(url);
 
 
@@ -29,6 +27,9 @@ public class CreateConnection {
         }
         return null;
     }
+
+
+
     //Puedo usar sobrecarga es decir definir un metodo con mismo nombre paratodo con insertstatementOf
 
 
