@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Track {
 
-    private Album album;
     private List<Artist> artists;
     private List<String> available_markets;
     private int disc_number;
@@ -25,8 +24,7 @@ public class Track {
     private String uri;
 
 
-    public Track(Album album, List<Artist> artists, List<String> available_markets, int disc_number, int duration_ms, boolean explicit, External_urls external_urls, String href, String id, boolean is_local, String name, String preview_url, int track_number, String type, String uri) {
-        this.album = album;
+    public Track(List<Artist> artists, List<String> available_markets, int disc_number, int duration_ms, boolean explicit, External_urls external_urls, String href, String id, boolean is_local, String name, String preview_url, int track_number, String type, String uri) {
         this.artists = artists;
         this.available_markets = available_markets;
         this.disc_number = disc_number;
@@ -42,10 +40,6 @@ public class Track {
         this.type = type;
         this.uri = uri;
     }
-    public String getAlbum() {
-        return album.getName();
-    }
-
     public String getArtists() {
         String url = "";
         for(Artist artist : artists){

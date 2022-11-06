@@ -32,7 +32,8 @@ public class DataBaseInsert {
     public void  insertStatementOfAlbum(List<Album> albums) throws SQLException {
         DmlTranslator dmlTranslator = new DmlTranslator(conn);
         for(Album album : albums){
-            dmlTranslator.AlbumToDml(album.getName(), album.getAlbum_type(), album.getTotal_tracks(), album.getAvailable_markets(), album.getExternal_urls(), album.getHref(), album.getId(), album.getImagesUrl(), album.getImagesHeight(), album.getImagesWidth(), album.getRelease_date(), album.getRelease_date_presicion(), album.getType(), album.getUri(), album.getArtists(), album.getLimit(), album.getNext(), album.getOffset(), album.getPrevious(), album.getTotal());
+            System.out.println(album.getRelease_date_precision());
+            dmlTranslator.AlbumToDml(album.getName(), album.getAlbum_group(), album.getAlbum_type(), album.getArtists(), album.getAvailable_markets(), album.getExternal_urls(), album.getHref(), album.getId(), album.getImagesUrl(), album.getImagesWidth(), album.getImagesHeight(), album.getRelease_date(), album.getRelease_date_precision(), album.getTotal_tracks(), album.getType(), album.getUri());
         }
     }
 

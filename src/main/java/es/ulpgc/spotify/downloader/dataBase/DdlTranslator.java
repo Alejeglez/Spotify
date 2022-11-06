@@ -38,10 +38,11 @@ public class DdlTranslator {
         Statement statement = conn.createStatement();
         statement.execute("CREATE TABLE IF NOT EXISTS Albumes (" +
                 "name TEXT NO NULL ," +
+                "albumGroup TEXT NO NULL , "+
                 "albumType TEXT NO NULL ," +
-                "totalTracks REAL ," +
+                "artistName TEXT NO NULL," +
                 "availableMarkets TEXT ,"+
-                "external_urls TEXT ," +
+                "externalUrls TEXT ," +
                 "href TEXT ," +
                 "id TEXT ," +
                 "imageUrl TEXT NO NULL," +
@@ -51,12 +52,7 @@ public class DdlTranslator {
                 "realeaseDatePresicion TEXT NO NULL," +
                 "type TEXT NO NULL," +
                 "uri TEXT NO NULL," +
-                "artistName TEXT NO NULL," +
-                "limitAlbum REAL NO NULL," +
-                "next TEXT NO NULL," +
-                "offset REAL NO NULL," +
-                "previous TEXT NO NULL," +
-                "total REAL NO NULL" +
+                "totalTracks REAL" +
                 ")");
 
     }

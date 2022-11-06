@@ -1,25 +1,25 @@
 package es.ulpgc.spotify.downloader.artist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilterArtist {
 
-    private int popularity;
+    private String name;
     private List<Artist> artists;
 
-    public FilterArtist(List<Artist> artists, int popularity) {
+    public FilterArtist(List<Artist> artists, String name) {
         this.artists = artists;
-        this.popularity = popularity;
+        this.name = name;
     }
 
-    public List<Artist> getFilteredArtist(){
-        int index = 0;
+    public Artist getFilteredArtist(){
         for(Artist artist : artists){
-            if(artist.getPopularity() < popularity){
-                artists.remove(index);
+            if(name.equals(artist.getName())) {
+                List<String> urls = new ArrayList<>();
+                urls.add(artist.getId());
             }
-            index ++;
         }
-        return artists;
+        return null;
     }
 }

@@ -9,76 +9,33 @@ import java.util.Map;
 
 public class Album {
 
+    private String album_group;
     private String album_type;
-
-    private int total_tracks;
-
-    private List<String> available_markets;
-
-    private External_urls external_urls;
-
-    private String href;
-
-    private String id;
-
-    private List<Image> images;
-
-    private String name;
-
-    private String release_date;
-
-    private String release_date_presicion;
-
-    private Restriction restrictions;
-
-    private String type;
-
-    private String uri;
-
     private List<Artist> artists;
 
-    private int limit;
 
-    private String next;
 
-    private int offset;
+    private List<String> available_markets;
+    private External_urls external_urls;
+    private String href;
+    private String id;
+    private List<Image> images;
+    private String name;
+    private String release_date;
+    private String release_date_precision;
+    private int total_tracks;
+    private String type;
+    private String uri;
 
-    private String previous;
-
-    private int total;
-
-    public Album(String album_type, int total_tracks, List<String> available_markets, External_urls external_urls, String href, String id, List<Image> images, String name, String release_date, String release_date_presicion, Restriction restrictions, String type, String uri, List<Artist> artists, int limit, String next, int offset, String previous, int total) {
-        this.album_type = album_type;
-        this.total_tracks = total_tracks;
-        this.available_markets = available_markets;
-        this.external_urls = external_urls;
-        this.href = href;
-        this.id = id;
-        this.images = images;
-        this.name = name;
-        this.release_date = release_date;
-        this.release_date_presicion = release_date_presicion;
-        this.restrictions = restrictions;
-        this.type = type;
-        this.uri = uri;
-        this.artists = artists;
-        this.limit = limit;
-        this.next = next;
-        this.offset = offset;
-        this.previous = previous;
-        this.total = total;
+    public String getAlbum_group() {
+        return album_group;
     }
 
     public String getAlbum_type() {
         return album_type;
     }
 
-    public int getTotal_tracks() {
-        return total_tracks;
-    }
-
     public String getAvailable_markets() {
-
         String url = "";
         for(String market : available_markets){
             url += market + ",";
@@ -87,8 +44,15 @@ public class Album {
     }
 
     public String getExternal_urls() {
-
         return external_urls.getSpotify();
+    }
+
+    public String getArtists() {
+        String url = "";
+        for(Artist artist : artists){
+            url += artist.getName();
+        }
+        return url.substring(0, url.length()-1);
     }
 
     public String getHref() {
@@ -107,19 +71,20 @@ public class Album {
         return url.substring(0, url.length() - 1);
     }
 
-    public String getImagesWidth(){
+    public String getImagesWidth() {
         String url = "";
-        for(Image image : images){
+        for (Image image : images) {
             url += image.getWidth() + ",";
         }
-        return  url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
-    public String getImagesHeight(){
+
+    public String getImagesHeight() {
         String url = "";
-        for(Image image : images){
+        for (Image image : images) {
             url += image.getHeight() + ",";
         }
-        return  url.substring(0, url.length()-1);
+        return url.substring(0, url.length() - 1);
     }
 
     public String getName() {
@@ -130,14 +95,12 @@ public class Album {
         return release_date;
     }
 
-    public String getRelease_date_presicion() {
-
-        return release_date_presicion;
+    public String getRelease_date_precision() {
+        return release_date_precision;
     }
 
-    public String getRestrictions() {
-
-        return restrictions.getReason();
+    public int getTotal_tracks() {
+        return total_tracks;
     }
 
     public String getType() {
@@ -148,34 +111,20 @@ public class Album {
         return uri;
     }
 
-    public String getArtists() {
-
-        String url = "";
-        for(Artist artist : artists){
-            url += artist.getName() + ",";
-        }
-        return url.substring(0, url.length()-1);
+    public Album(String album_group, String album_type, List<Artist> artists, List<String> available_markets, External_urls external_urls, String href, String id, List<Image> images, String name, String release_date, String release_date_precision, int total_tracks, String type, String uri) {
+        this.album_group = album_group;
+        this.album_type = album_type;
+        this.artists = artists;
+        this.available_markets = available_markets;
+        this.external_urls = external_urls;
+        this.href = href;
+        this.id = id;
+        this.images = images;
+        this.name = name;
+        this.release_date = release_date;
+        this.release_date_precision = release_date_precision;
+        this.total_tracks = total_tracks;
+        this.type = type;
+        this.uri = uri;
     }
-
-    public int getLimit() {
-        return limit;
-    }
-
-    public String getNext() {
-        return next;
-    }
-
-    public int getOffset() {
-        return offset;
-    }
-
-    public String getPrevious() {
-        return previous;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-
 }
