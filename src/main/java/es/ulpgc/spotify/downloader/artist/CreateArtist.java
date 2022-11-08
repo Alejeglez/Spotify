@@ -1,8 +1,6 @@
 package es.ulpgc.spotify.downloader.artist;
 
 import com.google.gson.Gson;
-import java.util.Arrays;
-import java.util.List;
 
 public class CreateArtist {
 

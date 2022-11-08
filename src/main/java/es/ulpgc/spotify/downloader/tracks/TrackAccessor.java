@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TrackAccesor {
+public class TrackAccessor {
 
     private List<AlbumsList> listsAlbums;
 
-    public TrackAccesor( List<AlbumsList> listsAlbums) {
+    public TrackAccessor(List<AlbumsList> listsAlbums) {
         this.listsAlbums = listsAlbums;
     }
 

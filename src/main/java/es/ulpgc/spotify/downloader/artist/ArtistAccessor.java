@@ -5,9 +5,9 @@ import es.ulpgc.spotify.downloader.SpotifyAccessor;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ArtistAccesor {
+public class ArtistAccessor {
 
-    public ArtistAccesor(ArrayList<String> urls) {
+    public ArtistAccessor(ArrayList<String> urls) {
         this.urls = urls;
     }
 

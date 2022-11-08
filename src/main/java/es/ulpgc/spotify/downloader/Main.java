@@ -3,7 +3,6 @@ package es.ulpgc.spotify.downloader;
 
 import es.ulpgc.spotify.downloader.interfaz.MainScreen;
 
-import java.util.Map;
 
 
 public class Main {

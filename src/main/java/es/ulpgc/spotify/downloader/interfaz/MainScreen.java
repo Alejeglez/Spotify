@@ -1,6 +1,6 @@
 package es.ulpgc.spotify.downloader.interfaz;
 
-import es.ulpgc.spotify.downloader.album.AlbumAccesor;
+import es.ulpgc.spotify.downloader.album.AlbumAccessor;
 import es.ulpgc.spotify.downloader.album.AlbumsList;
 import es.ulpgc.spotify.downloader.album.CreateAlbums;
 import es.ulpgc.spotify.downloader.artist.*;
@@ -8,7 +8,7 @@ import es.ulpgc.spotify.downloader.dataBase.CreateConnection;
 import es.ulpgc.spotify.downloader.dataBase.DataBaseInsert;
 import es.ulpgc.spotify.downloader.dataBase.DdlTranslator;
 import es.ulpgc.spotify.downloader.tracks.CreateTracks;
-import es.ulpgc.spotify.downloader.tracks.TrackAccesor;
+import es.ulpgc.spotify.downloader.tracks.TrackAccessor;
 import es.ulpgc.spotify.downloader.tracks.TracksList;
 
 import java.sql.Connection;
@@ -35,7 +35,7 @@ public class MainScreen {
         select = leer.nextInt();
 
         createArtist();
-        ArtistAccesor accesor = new ArtistAccesor(urls);
+        ArtistAccessor accesor = new ArtistAccessor(urls);
 
         ArrayList<String> url2 = new ArrayList<>();
 
@@ -50,11 +50,17 @@ public class MainScreen {
             String name = leerName.nextLine();
             artistSelect = new ArtistSelect(name, creatorArtists);
 
+            System.out.println();
 
             ArtistList artistList = artistSelect.getArtistSelect().createArtist();
             List<Artist> artists = artistList.getArtists();
             Artist artist = artists.get(0);
-            url2.add(artist.getId());
+            if(url2.contains(artist.getId()) == false) {
+                url2.add(artist.getId());
+            }
+            else{
+                break;
+            }
 
             System.out.println("Artistas creados.");
 
@@ -68,7 +74,7 @@ public class MainScreen {
             System.out.println("Artistas insertados en tabla correctamente.");
             System.out.println("Seleccione entre: ");
             System.out.println();
-            System.out.println("1.Si desea cargar otro artista.(Introduzca otro nombre de lo contrario el programa se detendrá)");
+            System.out.println("1.Si desea cargar otro artista.(Introduzca un nombre de la lista, de lo contrario el programa se detendrá.)");
             System.out.println("2.Si desea descargar los albumes y canciones de los artistas actuales.");
             System.out.println();
             select = leer.nextInt();
@@ -85,6 +91,8 @@ public class MainScreen {
 
             insertElements.insertStatementOfArtist(artists);
             System.out.println("Artistas insertados en tabla correctamente.");
+            System.out.println();
+
         }
 
 
@@ -92,7 +100,7 @@ public class MainScreen {
             urls = url2;
         }
 
-        AlbumAccesor accesorAlbum = new AlbumAccesor(urls);
+        AlbumAccessor accesorAlbum = new AlbumAccessor(urls);
         CreateAlbums creadorAlbums = new CreateAlbums(accesorAlbum.getJson());
         List<AlbumsList> albumsListOfList = creadorAlbums.createAlbums();
 
@@ -102,7 +110,6 @@ public class MainScreen {
         creatorsTable.createTableAlbums();
 
         System.out.println("Tabla albumes creada.");
-        System.out.println();
 
         for(AlbumsList albumsList : albumsListOfList){
             insertElements.insertStatementOfAlbum(albumsList.getItems());
@@ -111,7 +118,7 @@ public class MainScreen {
         System.out.println("Albumes insertados.");
         System.out.println();
 
-        TrackAccesor accesorTracks = new TrackAccesor(creadorAlbums.createAlbums());
+        TrackAccessor accesorTracks = new TrackAccessor(creadorAlbums.createAlbums());
         CreateTracks creadorTracks = new CreateTracks(accesorTracks.getJson());
         List<TracksList> tracksListOfList = creadorTracks.getTracks();
 
