@@ -43,7 +43,7 @@ public class Track {
     public String getArtists() {
         String url = "";
         for(Artist artist : artists){
-            url += artist.getName();
+            url += artist.getName() + ",";
         }
         return url.substring(0, url.length()-1);
     }
@@ -51,7 +51,7 @@ public class Track {
     public String getAvailable_markets() {
         String url = "";
         for(String market : available_markets){
-            url += market;
+            url += market + ",";
         }
         if(url.length() > 1) {
             return url.substring(0, url.length() - 1);
