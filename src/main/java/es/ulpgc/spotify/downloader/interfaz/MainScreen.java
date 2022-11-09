@@ -29,6 +29,9 @@ public class MainScreen {
         DataBaseInsert insertElements = new DataBaseInsert(connection.connect());
         DdlTranslator creatorsTable = new DdlTranslator(connection.connect());
         Connection conn = connection.connect();
+        System.out.println("Conectado a base de datos SpotifyDB.db");
+        System.out.println();
+
         int i = 0;
         int select;
         Scanner leer = new Scanner(System.in);
@@ -104,18 +107,18 @@ public class MainScreen {
         CreateAlbums creadorAlbums = new CreateAlbums(accesorAlbum.getJson());
         List<AlbumsList> albumsListOfList = creadorAlbums.createAlbums();
 
-        System.out.println("Albumes creados.");
+        System.out.println("Albums creados.");
 
 
         creatorsTable.createTableAlbums();
 
-        System.out.println("Tabla albumes creada.");
+        System.out.println("Tabla albums creada.");
 
         for(AlbumsList albumsList : albumsListOfList){
             insertElements.insertStatementOfAlbum(albumsList.getItems());
         }
 
-        System.out.println("Albumes insertados.");
+        System.out.println("Albums insertados.");
         System.out.println();
 
         TrackAccessor accesorTracks = new TrackAccessor(creadorAlbums.createAlbums());
@@ -139,7 +142,6 @@ public class MainScreen {
 
         System.out.println("Conexión con base de datos cerrada. Ejecución finalizada.");
 
-        return;
     }
 
     private static void createArtist() {
